@@ -1,0 +1,3 @@
+#!/bin/bash
+cd program
+python3 buaris.py
