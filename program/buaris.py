@@ -4,25 +4,12 @@ from dotenv import load_dotenv
 import sys
 import pygame
 import time
-from PyQt5.QtCore import QSize
-from PyQt5.QtGui import (QImage, QPalette, QBrush)
+from PyQt5.QtCore import (QSize, Qt, ) 
+from PyQt5.QtGui import (QImage, QPalette, QBrush, Qfont, QIcon, )
 from discord import Intents
 from discord.ext import commands
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
 import qasync
-from PyQt5.QtWidgets import (
-    QApplication,
-    QHBoxLayout,
-    QLabel,
-    QLineEdit,
-    QPushButton,
-    QTextEdit,
-    QVBoxLayout,
-    QWidget,
-    QPushButton,
-)
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (QApplication,QHBoxLayout,QLabel,QLineEdit,QPushButton,QTextEdit,QVBoxLayout,QWidget,Pushbutton, )
 import PyQt5.QtCore as QtCore
 intents = Intents.all()
 from discord import Intents
