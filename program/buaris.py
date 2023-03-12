@@ -4,12 +4,15 @@ from dotenv import load_dotenv
 import sys
 import pygame
 import time
+from mtranslate import translate
+from langdetect import detect
+from buaris_dict import language_map
 from PyQt5.QtCore import (QSize, Qt, ) 
-from PyQt5.QtGui import (QImage, QPalette, QBrush, Qfont, QIcon, )
+from PyQt5.QtGui import (QImage, QPalette, QBrush, QIcon,QFont )
 from discord import Intents
 from discord.ext import commands
 import qasync
-from PyQt5.QtWidgets import (QApplication,QHBoxLayout,QLabel,QLineEdit,QPushButton,QTextEdit,QVBoxLayout,QWidget,Pushbutton, )
+from PyQt5.QtWidgets import (QApplication,QHBoxLayout,QLabel,QLineEdit,QTextEdit,QVBoxLayout,QWidget,QPushButton )
 import PyQt5.QtCore as QtCore
 intents = Intents.all()
 from discord import Intents
@@ -115,13 +118,10 @@ class Buaris(QWidget):
         async def on_message(message):
                 if message.author == self.bot.user:
                     return
-                if message.channel.id == 1036582147877781545:
-                    time.sleep(0.1)
-                    if "Bot" in message.author.name:
-                        self.message_display.append(message.author.name +": "+ message.content)
-                    else:
-                        self.message_display.append("<font color = blue>"+message.author.name +": "+ message.content+"</font>")
-                        self.sound.play()
+                if message.channel.id == 1084464995011657809:
+                    input_lang = detect(message.content)
+                    self.message_display.append("<font color = blue>"+message.author.name +": "+ translate(message.content, language_map[input_lang], 'english') +"</font>")
+                    self.sound.play()
                 
 
     async def post_message(self):
@@ -130,7 +130,7 @@ class Buaris(QWidget):
         self.message_input.setText("")
 
         # Send the message to Discord via the bot
-        channel_id = 1036582147877781545  # Replace with the ID of the channel you want to post messages to
+        channel_id = 1084464995011657809  # Replace with the ID of the channel you want to post messages to
         channel = self.bot.get_channel(channel_id)
         await channel.send(message)
 
