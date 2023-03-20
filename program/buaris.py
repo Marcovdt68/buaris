@@ -14,9 +14,11 @@ from discord.ext import commands
 import qasync
 from PyQt5.QtWidgets import (QApplication,QHBoxLayout,QLabel,QLineEdit,QTextEdit,QVBoxLayout,QWidget,QPushButton )
 import PyQt5.QtCore as QtCore
+from PyQt5.QtGui import QColor
 intents = Intents.all()
 from discord import Intents
 from discord.ext import commands
+
 
 
 class Buaris(QWidget):
@@ -85,6 +87,41 @@ class Buaris(QWidget):
         )
 
         # Create the layout and add the widgets
+        def light():
+            app.setStyle("Fusion")
+            palette = QPalette()
+            palette.setColor(QPalette.Window, QColor(53, 53, 53))
+            palette.setColor(QPalette.WindowText, Qt.white)
+            palette.setColor(QPalette.Base, QColor(25, 25, 25))
+            palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+            palette.setColor(QPalette.ToolTipBase, Qt.white)
+            palette.setColor(QPalette.ToolTipText, Qt.white)
+            palette.setColor(QPalette.Text, Qt.white)
+            palette.setColor(QPalette.Button, QColor(53, 53, 53))
+            palette.setColor(QPalette.ButtonText, Qt.white)
+            palette.setColor(QPalette.BrightText, Qt.red)
+            palette.setColor(QPalette.Link, QColor(42, 130, 218))
+            palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+            palette.setColor(QPalette.HighlightedText, Qt.black)
+            app.setPalette(palette)
+
+        def dark():
+            app.setStyle("Fusion")
+            palette = QPalette()
+            palette.setColor(QPalette.Window, QColor(53, 53, 53))
+            palette.setColor(QPalette.WindowText, Qt.white)
+            palette.setColor(QPalette.Base, QColor(25, 25, 25))
+            palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+            palette.setColor(QPalette.ToolTipBase, Qt.black)
+            palette.setColor(QPalette.ToolTipText, Qt.black)
+            palette.setColor(QPalette.Text, Qt.white)
+            palette.setColor(QPalette.Button, QColor(53, 53, 53))
+            palette.setColor(QPalette.ButtonText, Qt.white)
+            palette.setColor(QPalette.BrightText, Qt.red)
+            palette.setColor(QPalette.Link, QColor(42, 130, 218))
+            palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+            palette.setColor(QPalette.HighlightedText, Qt.black)
+            app.setPalette(palette)
         layout = QVBoxLayout(self)
         layout.addWidget(QLabel("What's on your mind?"), alignment=Qt.AlignCenter)
         layout.addWidget(self.message_input)
@@ -104,9 +141,10 @@ class Buaris(QWidget):
         layout.addLayout(button_layout)
         layout.addWidget(QLabel("chat logs:"), alignment=Qt.AlignCenter)
         pygame.mixer.pre_init(48000, -16, 1, 1024)
-        style_button = QPushButton("Switch between Light/Dark mode")
+        style_button = QPushButton("Switch between Light/Dark mode", self)
+        style_button.clicked.connect(dark)
+        style_button.clicked.connect(light)
         style_button.setStyleSheet("QPushButton {background-color: #007bff; color: #fff} QPushButton:hover {background-color: #0069d9;} QPushButton:pressed {background-color:#004085;}")
-
         style_button.clicked.connect(lambda:app.setStyleSheet("QWidget {background-color: #333; color: #fff} QLabel {color: #fff}"))
         layout.addWidget(style_button, alignment=Qt.AlignRight)
         pygame.init()
@@ -159,3 +197,4 @@ if __name__ == "__main__":
         loop.run_until_complete(main())
     finally:
         loop.close()
+    sys.exit(app.exec_())
