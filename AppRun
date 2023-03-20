@@ -1,5 +1,5 @@
 #!/bin/bash
 cd projects
-cd buaris-tests
+cd buaris
 cd program
 python3 buaris.py
