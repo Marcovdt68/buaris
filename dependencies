@@ -1,0 +1,15 @@
+#!/bin/bash
+pip install discord
+pip install discord.ext
+pip install python-dotenv
+pip install PyQt5.QtCore
+pip install PyQt5.QtWidgets
+pip install qasync
+pip install PyQt5.QtGui
+pip install langdetect
+pip install mtranslate
+pip install time
+pip install pygame
+pip install sys
+pip install os
+pip install asyncio
