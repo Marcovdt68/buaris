@@ -13,7 +13,7 @@ Here are some of the features you can expect from Buaris:
 
 - Memory and Core Dumping every 25 minutes - this means that the program will crash and restart every 25 minutes, creating an unpredictable user experience. 
 
-- Bugs and Glitches - we have implemented a number of bugs and glitches into the platform to make sure that you encounter something new every time you log in. 
+- Bugs and Glitches - we have "implemented" a number of bugs and glitches into the platform to make sure that you encounter something new every time you log in. 
 
 - Poorly Written Code - Buaris is written with the worst code in mind. This means that you can expect a lot of strange behavior and unexpected results.
 
