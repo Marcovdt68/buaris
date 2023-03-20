@@ -18,7 +18,7 @@ Here are some of the features you can expect from Buaris:
 - Poorly Written Code - Buaris is written with the worst code in mind. This means that you can expect a lot of strange behavior and unexpected results.
 
 We hope that you enjoy your experience with Buaris! If you have any questions or feedback, please feel free to contact me at marcovdt69@gmail.com.
-#App info
+# App info
 a useless piece of code on your desktop that can send discord messages and also recieve them.
 It will also tranlate non native text into english for you!
 # Deployment
