@@ -1,0 +1,5 @@
+#!/bin/bash
+cd projects
+cd buaris
+cd program
+python3 buaris.py
