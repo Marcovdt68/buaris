@@ -18,7 +18,6 @@ intents = Intents.all()
 from discord import Intents
 from discord.ext import commands
 
-
 class Buaris(QWidget):
     def __init__(self):
         super().__init__()
@@ -32,7 +31,7 @@ class Buaris(QWidget):
         palette.setBrush(QPalette.Window, QBrush(sImage))                        
         self.setPalette(palette)
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
-        self.setMinimumSize(1820, 980)
+        self.setMinimumSize(1800, 900)
 
         # Initialize the Discord bot
         self.bot = commands.Bot(command_prefix="!", intents=intents)
@@ -40,8 +39,7 @@ class Buaris(QWidget):
         # Create the message input, post button, and message display
         self.message_input = QLineEdit()
         self.post_button = QPushButton(
-            "Post", clicked=lambda: asyncio.create_task(self.post_message())
-        )
+            "Post", clicked=lambda: asyncio.create_task(self.post_message()))
         self.message_display = QTextEdit()
         self.message_input.returnPressed.connect(self.post_button.animateClick)
 
@@ -104,11 +102,14 @@ class Buaris(QWidget):
         layout.addLayout(button_layout)
         layout.addWidget(QLabel("chat logs:"), alignment=Qt.AlignCenter)
         pygame.mixer.pre_init(48000, -16, 1, 1024)
-        style_button = QPushButton("Switch between Light/Dark mode")
-        style_button.setStyleSheet("QPushButton {background-color: #007bff; color: #fff} QPushButton:hover {background-color: #0069d9;} QPushButton:pressed {background-color:#004085;}")
-
-        style_button.clicked.connect(lambda:app.setStyleSheet("QWidget {background-color: #333; color: #fff} QLabel {color: #fff}"))
-        layout.addWidget(style_button, alignment=Qt.AlignRight)
+        dark_button = QPushButton("Dark mode")
+        dark_button.setStyleSheet("QPushButton {background-color: #00008b; color: #fff} QPushButton:hover {background-color: #0069d9;} QPushButton:pressed {background-color:#004085;}")
+        light_button = QPushButton("Light mode")
+        light_button.setStyleSheet("QPushButton {background-color: #007bff; color: #fff} QPushButton:hover {background-color: #0069d9;} QPushButton:pressed {background-color:#004085;}")
+        dark_button.clicked.connect(lambda:app.setStyleSheet("QWidget {background-color: #333;} QLabel {color: #fff}"))
+        light_button.clicked.connect(lambda:app.setStyleSheet("QWidget {background-color: #fff;} QLabel {color: #000}"))
+        layout.addWidget(light_button, alignment=Qt.AlignRight)
+        layout.addWidget(dark_button, alignment=Qt.AlignRight)
         pygame.init()
         self.sound = pygame.mixer.Sound("beep.mp3")
         layout.addWidget(self.message_display)
