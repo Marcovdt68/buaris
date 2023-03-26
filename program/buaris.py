@@ -120,8 +120,7 @@ class Buaris(QWidget):
                 if message.author == self.bot.user:
                     return
                 if message.channel.id == 1084464995011657809:
-                    input_lang = detect(message.content)
-                    self.message_display.append("<font color = blue>"+message.author.name +": "+ translate(message.content, language_map[input_lang], 'english') +"</font>")
+                    self.message_display.append("<font color = blue>"+message.author.name +": "+ translate(message.content) +"</font>")
                     self.sound.play()
                 
 
