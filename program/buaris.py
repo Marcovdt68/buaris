@@ -24,22 +24,26 @@ class Buaris(QWidget):
 
         # Set the window title and size
         self.setWindowTitle("Buaris")
+        stylesheet = '''
+    #MainWindow {
+        background-image: url(white.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+'''        
+        self.setStyleSheet(stylesheet)
+        self.show()
         self.setGeometry(50, 50, 1800, 900)
-        oImage = QImage("white.png")
-        sImage = oImage.scaled(QSize(1800, 900))                   # resize Image to widgets size
-        palette = QPalette()
-        palette.setBrush(QPalette.Window, QBrush(sImage))                        
-        self.setPalette(palette)
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.setMinimumSize(1800, 900)
+        self.setWindowIcon(QIcon("icon.png"))
 
         # Initialize the Discord bot
         self.bot = commands.Bot(command_prefix="!", intents=intents)
 
         # Create the message input, post button, and message display
         self.message_input = QLineEdit()
-        self.post_button = QPushButton(
-            "Post", clicked=lambda: asyncio.create_task(self.post_message()))
+        self.post_button = QPushButton("Post", clicked=lambda: asyncio.create_task(self.post_message()))
         self.message_display = QTextEdit()
         self.message_input.returnPressed.connect(self.post_button.animateClick)
 
