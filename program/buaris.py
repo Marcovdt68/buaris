@@ -117,7 +117,6 @@ class Buaris(QWidget):
         pygame.init()
         self.sound = pygame.mixer.Sound("beep.mp3")
         layout.addWidget(self.message_display)
-
     # Register the on_message event listener
         @self.bot.event
         async def on_message(message):
@@ -126,18 +125,17 @@ class Buaris(QWidget):
                 if message.channel.id == 1084464995011657809:
                     self.message_display.append("<font color = blue>"+message.author.name +": "+ translate(message.content) +"</font>")
                     self.sound.play()
-                
+                if message.content == "exit()" or "Exit()":
+                    sys.exit(app.exec_())
 
     async def post_message(self):
         message = self.message_input.text()
         self.message_display.append(message)
         self.message_input.setText("")
-
         # Send the message to Discord via the bot
         channel_id = 1084464995011657809  # Replace with the ID of the channel you want to post messages to
         channel = self.bot.get_channel(channel_id)
         await channel.send(message)
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
