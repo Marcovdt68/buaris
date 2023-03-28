@@ -118,6 +118,7 @@ class Buaris(QWidget):
         self.sound = pygame.mixer.Sound("beep.mp3")
         layout.addWidget(self.message_display)
     # Register the on_message event listener
+        a = False
         @self.bot.event
         async def on_message(message):
                 if message.author == self.bot.user:
@@ -125,9 +126,6 @@ class Buaris(QWidget):
                 if message.channel.id == 1084464995011657809:
                     self.message_display.append("<font color = blue>"+message.author.name +": "+ translate(message.content) +"</font>")
                     self.sound.play()
-                if message.content == "exit()" or "Exit()":
-                    sys.exit(app.exec_())
-
     async def post_message(self):
         message = self.message_input.text()
         self.message_display.append(message)
