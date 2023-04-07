@@ -3,7 +3,7 @@
   <img width="400em" src="https://github.com/Marcovdt68/.github/blob/main/Buaris.png" />
   <br>
 </p>
-The latest and gratest in fuck around and find out: Buaris, the best soon to be social media platform
+The latest and greatest in fuck around and find out: Buaris, the best soon to be social media platform
 
 Welcome to Buaris, the soon to be social media platform that promises to provide the worst code anyone has ever seen.
 This platform is made for fun and will contain numerous bugs and crashes.
